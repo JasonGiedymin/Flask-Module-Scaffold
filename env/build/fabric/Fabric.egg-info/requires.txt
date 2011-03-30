@@ -1,2 +1,0 @@
-pycrypto >= 1.9
-paramiko >=1.7.6
