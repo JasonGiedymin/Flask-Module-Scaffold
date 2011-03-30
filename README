@@ -1,0 +1,55 @@
+Author: Jason Giedymin <jasong _[_a-t_]_ apache [dot] org>
+
+== What is this? ==
+Use this scaffold / template as a basis for a Subapp / Module based Flask 
+application using subdomains and subapps content. There is also an example
+of using a subapp / module to extend root app space.
+
+The application relies on Fabric to start, and includes staging
+functionality to auto install all required dependencies.
+
+== How To Use this? ==
+First you'll need to edit your hosts file to direct the 'dummy' subdomain to localhost.
+1. Edit /etc/hosts
+2. Add an entry for "127.0.0.1  dummy.localhost"
+
+Start installing dependencies and run the app:
+1. Clone this repo
+2. pip install fabric
+3. cd Flask-Module-Scaffold/src
+4. fab -l #Lists all commands
+5. fab staging_local #Creates virtualenv and pip installs
+6. fab start_dev_server #Starts the dev server
+
+== The app is running, now what? ==
+Navigate to these pages:
+    # Served from the 'frontend' subapp/module
+    # Templates and CSS served from frontend/[static,templates]
+    http://localhost:8080
+    http://localhost:8080/template
+    
+    # Served from the 'dummy' subbapp/module
+    # Templates and CSS served from dummy/[static,templates]
+    http://dummy.localhost:8080/
+    http://dummy.localhost:8080/template
+    
+    # Served from the 'root' subapp/module using the main apps static/template
+    # directories.
+    # Templates and CSS served from root myapp/[static,templates]
+    # To prove this, apps/root/ is devoid of the static and templates directories.
+    http://localhost:8080/hello
+    http://localhost:8080/root-template
+
+== References ==
+Flask:  http://flask.pocoo.org/
+        "Flask is a microframework for Python based on Werkzeug, Jinja 2
+        and good intentions. And before you ask: It's BSD licensed!"
+
+Fabric: http://docs.fabfile.org/en/1.0.1/index.html
+        "Fabric is a Python (2.5 or higher) library and command-line 
+        tool for streamlining the use of SSH for application deployment
+        or systems administration tasks."
+        
+== Noob? ==
+This is a python repo using python tools and frameworks.
+
